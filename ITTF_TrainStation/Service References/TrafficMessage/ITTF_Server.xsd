@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ITTF_Server" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ITTF_Server" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/System.Net" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/Communication" />
+  <xs:simpleType name="ObjectType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Train" />
+      <xs:enumeration value="Station" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ObjectType" nillable="true" type="tns:ObjectType" />
+  <xs:complexType name="ServerMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Data" nillable="true" type="xs:base64Binary" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System.Net" minOccurs="0" name="EndPoint" nillable="true" type="q1:IPEndPoint" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Communication" minOccurs="0" name="TrainMessage" nillable="true" type="q2:Message" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServerMessage" nillable="true" type="tns:ServerMessage" />
+  <xs:complexType name="ArrayOfServerMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ServerMessage" nillable="true" type="tns:ServerMessage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfServerMessage" nillable="true" type="tns:ArrayOfServerMessage" />
+  <xs:simpleType name="ClientStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AllOK" />
+      <xs:enumeration value="NotConnected" />
+      <xs:enumeration value="IPMismatch" />
+      <xs:enumeration value="IdentificationError" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ClientStatus" nillable="true" type="tns:ClientStatus" />
+</xs:schema>

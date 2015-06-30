@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="MessageService" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="MessageService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="MessageService/Imports">
+      <xsd:import namespace="MessageService" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/ITTF_Server" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/System.Net" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/System.Net.Sockets" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/Communication" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ITrafficMessage_ConnectMe_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConnectMe" />
+  </wsdl:message>
+  <wsdl:message name="ITrafficMessage_ConnectMe_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConnectMeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrafficMessage_GetID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetID" />
+  </wsdl:message>
+  <wsdl:message name="ITrafficMessage_GetID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrafficMessage_SendMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessage" />
+  </wsdl:message>
+  <wsdl:message name="ITrafficMessage_SendMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrafficMessage_RetrieveMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:RetrieveMessage" />
+  </wsdl:message>
+  <wsdl:message name="ITrafficMessage_RetrieveMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RetrieveMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrafficMessage_RetrieveAllMessages_InputMessage">
+    <wsdl:part name="parameters" element="tns:RetrieveAllMessages" />
+  </wsdl:message>
+  <wsdl:message name="ITrafficMessage_RetrieveAllMessages_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RetrieveAllMessagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrafficMessage_MessagesAvailable_InputMessage">
+    <wsdl:part name="parameters" element="tns:MessagesAvailable" />
+  </wsdl:message>
+  <wsdl:message name="ITrafficMessage_MessagesAvailable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MessagesAvailableResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrafficMessage_WhatIsMyConnectionStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:WhatIsMyConnectionStatus" />
+  </wsdl:message>
+  <wsdl:message name="ITrafficMessage_WhatIsMyConnectionStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:WhatIsMyConnectionStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrafficMessage_Disconnect_InputMessage">
+    <wsdl:part name="parameters" element="tns:Disconnect" />
+  </wsdl:message>
+  <wsdl:message name="ITrafficMessage_Disconnect_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DisconnectResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITrafficMessage_MyEndPoint_InputMessage">
+    <wsdl:part name="parameters" element="tns:MyEndPoint" />
+  </wsdl:message>
+  <wsdl:message name="ITrafficMessage_MyEndPoint_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MyEndPointResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ITrafficMessage">
+    <wsdl:operation name="ConnectMe">
+      <wsdl:input wsaw:Action="MessageService/ITrafficMessage/ConnectMe" message="tns:ITrafficMessage_ConnectMe_InputMessage" />
+      <wsdl:output wsaw:Action="MessageService/ITrafficMessage/ConnectMeResponse" message="tns:ITrafficMessage_ConnectMe_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetID">
+      <wsdl:input wsaw:Action="MessageService/ITrafficMessage/GetID" message="tns:ITrafficMessage_GetID_InputMessage" />
+      <wsdl:output wsaw:Action="MessageService/ITrafficMessage/GetIDResponse" message="tns:ITrafficMessage_GetID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <wsdl:input wsaw:Action="MessageService/ITrafficMessage/SendMessage" message="tns:ITrafficMessage_SendMessage_InputMessage" />
+      <wsdl:output wsaw:Action="MessageService/ITrafficMessage/SendMessageResponse" message="tns:ITrafficMessage_SendMessage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveMessage">
+      <wsdl:input wsaw:Action="MessageService/ITrafficMessage/RetrieveMessage" message="tns:ITrafficMessage_RetrieveMessage_InputMessage" />
+      <wsdl:output wsaw:Action="MessageService/ITrafficMessage/RetrieveMessageResponse" message="tns:ITrafficMessage_RetrieveMessage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveAllMessages">
+      <wsdl:input wsaw:Action="MessageService/ITrafficMessage/RetrieveAllMessages" message="tns:ITrafficMessage_RetrieveAllMessages_InputMessage" />
+      <wsdl:output wsaw:Action="MessageService/ITrafficMessage/RetrieveAllMessagesResponse" message="tns:ITrafficMessage_RetrieveAllMessages_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MessagesAvailable">
+      <wsdl:input wsaw:Action="MessageService/ITrafficMessage/MessagesAvailable" message="tns:ITrafficMessage_MessagesAvailable_InputMessage" />
+      <wsdl:output wsaw:Action="MessageService/ITrafficMessage/MessagesAvailableResponse" message="tns:ITrafficMessage_MessagesAvailable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="WhatIsMyConnectionStatus">
+      <wsdl:input wsaw:Action="MessageService/ITrafficMessage/WhatIsMyConnectionStatus" message="tns:ITrafficMessage_WhatIsMyConnectionStatus_InputMessage" />
+      <wsdl:output wsaw:Action="MessageService/ITrafficMessage/WhatIsMyConnectionStatusResponse" message="tns:ITrafficMessage_WhatIsMyConnectionStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Disconnect">
+      <wsdl:input wsaw:Action="MessageService/ITrafficMessage/Disconnect" message="tns:ITrafficMessage_Disconnect_InputMessage" />
+      <wsdl:output wsaw:Action="MessageService/ITrafficMessage/DisconnectResponse" message="tns:ITrafficMessage_Disconnect_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MyEndPoint">
+      <wsdl:input wsaw:Action="MessageService/ITrafficMessage/MyEndPoint" message="tns:ITrafficMessage_MyEndPoint_InputMessage" />
+      <wsdl:output wsaw:Action="MessageService/ITrafficMessage/MyEndPointResponse" message="tns:ITrafficMessage_MyEndPoint_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>
